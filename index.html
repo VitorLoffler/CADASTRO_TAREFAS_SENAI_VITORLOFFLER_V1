@@ -8,31 +8,62 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
    <div class="cartao-aplicacao">
     <header class="cabecalho-aplicacao">
         <h1>Minhas Tarefas</h1>
-        <button id="botao-tema" class="botao-icone">
-            <i class="fa-solid fa-moon"></i>
-        </button>
+        <div class="botoes-topo">
+            <button id="botao-rfs" class="botao-icone" title="Ver RFS Feitas">
+                <i class="fa-solid fa-list-check"></i>
+            </button>
+            <button id="botao-tema" class="botao-icone">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
     </header>
 
     <div class="caixa-entrada">
-        <input type="text" id="campo-tarefa" placeholder="O que vamos fazer hoje?..." maxlength="40">
-        <button id="botao-adicionar" class="botao-principal"> 
-            <i class="fa-solid fa-plus"></i> Adicionar</button>
+        <div class="linha-input">
+            <input type="text" id="campo-tarefa" placeholder="O que temos pra hoje?" maxlength="40">
+            <select id="seletor-prioridade" class="seletor-prioridade">
+                <option value="baixa">🟢 Baixa</option>
+                <option value="media" selected>🟡 Média</option>
+                <option value="alta">🔴 Alta</option>
+            </select>
+        </div>
+        <div class="linha-botoes">
+            <button id="botao-adicionar" class="botao-principal"> 
+                <i class="fa-solid fa-plus"></i> Adicionar</button>
+            <button id="botao-excluir" class="botao-excluir">Excluir Tudo</button>
+        </div>
     </div>
 
-    <ul id="lista-tarefas" class="lista-tarefas">
-        <!-- As tarefas serão inseridas aqui dinamicamente via js -->
-    </ul>
-        <span id="contador-tarefas" class="rodape-aplicacao">0 Tarefas na lista</span>
-    <footer>
-        <h4>Este Programa foi Desenvolvido por: Vitor Marcelo Loffler </h4>
-        <img src="fotoMinha.jpg" alt="">
-    </footer>
+    <div class="filtros">
+        <button class="filtro-btn ativo" data-filtro="todas">Todas</button>
+        <button class="filtro-btn" data-filtro="pendentes">Pendentes</button>
+        <button class="filtro-btn" data-filtro="concluidas">Concluídas</button>
+    </div>
     
+    <button id="botao-organizar" class="botao-organizar">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> Organizar meu dia
+    </button>
+    
+    <div class="caixa-pesquisa">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="campo-pesquisa" placeholder="Pesquisar tarefa...">
+    </div>
+    
+    <ul id="lista-tarefas" class="lista-tarefas"></ul>
+
+    <div class="rodape-aplicacao">
+        <span id="contador-tarefas">0 Tarefas na lista</span>
+    </div>
    </div>
-   <script src="script.js"></script>
+
+   <footer>
+        <h4>Este Programa foi Desenvolvido por: Vitor Marcelo Loffler</h4>
+        <img src="fotoMinha.jpg" alt="">
+   </footer>
+   <div id="toast-container"></div>
+<script src="script.js"></script>
 </body>
 </html>
